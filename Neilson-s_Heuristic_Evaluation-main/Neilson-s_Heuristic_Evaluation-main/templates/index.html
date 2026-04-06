@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nielsen HCI Heuristic Evaluator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <!-- Background orbs -->
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">⚗️</span>
+        <span class="logo-text">HCI<span class="accent">Eval</span></span>
+      </div>
+      <p class="tagline">Nielsen's 10 Usability Heuristics — Automated Analysis</p>
+    </header>
+
+    <!-- Search Card -->
+    <div class="card search-card">
+      <div class="search-label">Enter any website URL to evaluate</div>
+      <div class="search-bar">
+        <span class="search-icon">🌐</span>
+        <input id="urlInput" type="text" placeholder="https://example.com" autocomplete="off"/>
+        <button id="analyzeBtn" onclick="runAnalysis()">
+          <span id="btnText">Analyze</span>
+          <span id="btnSpinner" class="spinner hidden"></span>
+        </button>
+      </div>
+      <div id="errorMsg" class="error-msg hidden"></div>
+    </div>
+
+    <!-- Score Section -->
+    <div id="scoreSection" class="score-section hidden">
+      <div class="score-card">
+        <div class="score-ring-wrapper">
+          <svg class="score-ring" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle id="ringProgress" class="ring-progress" cx="60" cy="60" r="50"
+              stroke-dasharray="314" stroke-dashoffset="314"/>
+          </svg>
+          <div class="score-center">
+            <span id="scoreValue" class="score-num">0</span>
+            <span class="score-label">/100</span>
+          </div>
+        </div>
+        <div class="score-meta">
+          <h2 class="score-title">Usability Score</h2>
+          <p id="scoreDesc" class="score-desc"></p>
+          <div class="score-badges">
+            <span id="passCount" class="badge badge-pass">0 Passed</span>
+            <span id="failCount" class="badge badge-fail">0 Issues</span>
+          </div>
+          <button class="pdf-btn" onclick="exportPDF()">📄 Export PDF Report</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Grid -->
+    <div id="resultsGrid" class="results-grid hidden"></div>
+
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
